@@ -10,8 +10,12 @@ var margin = {
     left: 50
   };
   
-//declare graphing area (relative to SVG)
+//Declare graphing area (relative to SVG)
   var width = svgWidth - margin.left - margin.right;
   var height = svgHeight - margin.top - margin.bottom;
 
-  
+//SVG wrapper, append to html page
+var svg = d3.select("#scatter")
+.append("svg")
+.attr("width", svgWidth)
+.attr("height", svgHeight);
