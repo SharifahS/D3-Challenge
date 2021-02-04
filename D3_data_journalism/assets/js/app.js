@@ -35,16 +35,16 @@ HealthData.forEach(function(data){
     data.healthcare = +data.healthcare;
 });
 
- //Scale functions
+//Axis scale x
  var xLinearScale = d3.scaleLinear()
  .domain([10, d3.max(HealthData, d => d.poverty)])
  .range([0, width]);
 
- //Axis scale
+//Axis scale y
  var yLinearScale = d3.scaleLinear()
   .domain([0, d3.max(HealthData, d => d.healthcare)])
   .range([height, 0]);
 
-// Create and append axes
+//Create and append axes
 var bottomAxis = d3.axisBottom(xLinearScale);
 var leftAxis = d3.axisLeft(yLinearScale);
