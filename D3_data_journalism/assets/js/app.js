@@ -1,13 +1,13 @@
 //SVG width and height values
-var svgWidth = 1000;
+var svgWidth = 800;
 var svgHeight = 600;
 
 //Margin data
 var margin = {
     top: 20,
     right: 20,
-    bottom: 20,
-    left: 50
+    bottom: 100,
+    left: 30
   };
   
 //Declare graphing area (relative to SVG)
@@ -80,8 +80,8 @@ chartGroup.selectAll("circle")
 // Axes Labels
 chartGroup.append("text")
 .attr("transform", "rotate(-90)")
-.attr("y", 0 - margin.left )
-.attr("x", 0- (height/1.5))
+.attr("y", -5- margin.left )
+.attr("x", 5- (height/1.5))
 .attr("dy", "1em")
 .attr("class", "axisText")
 .style("font-weight", "bold")
@@ -90,6 +90,8 @@ chartGroup.append("text")
 chartGroup.append("text")
 .attr("transform", `translate(${width / 2}, ${height + margin.top + 30})`)
 .attr("class", "axisText")
+.attr("y", 35 - margin.left )
+.attr("x", 300 - (height/1.5))
 .style("font-weight", "bold")
 .text("In Poverty (%)");
 }).catch(function(error) {
