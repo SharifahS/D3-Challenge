@@ -48,3 +48,32 @@ HealthData.forEach(function(data){
 //Create and append axes
 var bottomAxis = d3.axisBottom(xLinearScale);
 var leftAxis = d3.axisLeft(yLinearScale);
+
+chartGroup.append("g")
+.attr("transform", `translate(0, ${height})`)
+.call(bottomAxis);
+
+chartGroup.append("g")
+.call(leftAxis);
+
+//Circles for scatter plot
+chartGroup.selectAll("circle")
+.data(HealthData)
+.enter()
+.append("circle")
+.attr("cx", d => xLinearScale(d.poverty))
+.attr("cy", d => yLinearScale(d.healthcare))
+.attr("r", "15")
+.classed("stateCircle", true)
+
+
+//State abbreviation labels and append to circle coordinates
+ chartGroup.selectAll(".stateText")
+ .data(HealthData)
+ .enter()
+ .append("text")
+ .classed('stateText', true)
+ .attr("x", d => xLinearScale(d.poverty))
+ .attr("y", d => yLinearScale(d.healthcare)+5)
+ .text(d => d.abbr)
+
