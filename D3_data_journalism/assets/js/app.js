@@ -44,3 +44,7 @@ HealthData.forEach(function(data){
  var yLinearScale = d3.scaleLinear()
   .domain([0, d3.max(HealthData, d => d.healthcare)])
   .range([height, 0]);
+
+// Create and append axes
+var bottomAxis = d3.axisBottom(xLinearScale);
+var leftAxis = d3.axisLeft(yLinearScale);
