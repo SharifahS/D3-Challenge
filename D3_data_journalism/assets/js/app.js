@@ -19,3 +19,28 @@ var svg = d3.select("#scatter")
 .append("svg")
 .attr("width", svgWidth)
 .attr("height", svgHeight);
+
+
+//Variable for chart group area
+var chartGroup = svg.append("g")
+.attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+//CSV import
+d3.csv("assets/data/data.csv").then(function(HealthData){
+    console.log(HealthData)
+
+//Parse data
+HealthData.forEach(function(data){
+    data.poverty = +data.poverty;
+    data.healthcare = +data.healthcare;
+});
+
+ //Scale functions
+ var xLinearScale = d3.scaleLinear()
+ .domain([10, d3.max(HealthData, d => d.poverty)])
+ .range([0, width]);
+
+ //Axis scale
+ var yLinearScale = d3.scaleLinear()
+  .domain([0, d3.max(HealthData, d => d.healthcare)])
+  .range([height, 0]);
