@@ -77,3 +77,26 @@ chartGroup.selectAll("circle")
  .attr("y", d => yLinearScale(d.healthcare)+5)
  .text(d => d.abbr)
 
+// Axes Labels
+chartGroup.append("text")
+.attr("transform", "rotate(-90)")
+.attr("y", 0 - margin.left )
+.attr("x", 0- (height/1.5))
+.attr("dy", "1em")
+.attr("class", "axisText")
+.style("font-weight", "bold")
+.text("Lacks Healthcare (%)");
+
+chartGroup.append("text")
+.attr("transform", `translate(${width / 2}, ${height + margin.top + 30})`)
+.attr("class", "axisText")
+.style("font-weight", "bold")
+.text("In Poverty (%)");
+}).catch(function(error) {
+console.log(error);
+});
+
+
+
+
+
